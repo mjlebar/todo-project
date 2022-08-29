@@ -1,15 +1,13 @@
+import { todo } from "./todo.js";
+
 function project(title) {
   const todos = [];
   const addTodo = (todo) => {
     todos.push(todo);
   };
   const displayTodos = () => {
-    const main = document.querySelector(".main");
     for (let todo of todos) {
-      const todoRow = document.createElement("p");
-      todoRow.textContent = todo.title;
-      todoRow.classList.add("todo");
-      main.appendChild(todoRow);
+      todo.display();
     }
   };
   return { title, todos, addTodo, displayTodos };
