@@ -1,0 +1,25 @@
+#content {
+  display: grid;
+  grid-template-rows: 100px 700px;
+  grid-template-columns: 1fr 4fr;
+}
+
+body {
+  margin: 0px;
+}
+
+.header {
+  background-color: green;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.sidebar {
+  background-color: blueviolet;
+}
+
+.main {
+  background-color: bisque;
+}
