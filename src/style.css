@@ -39,9 +39,30 @@ body {
 .todo {
   color: #1f2937;
   font-weight: 700;
-  border: 2px solid #166534;
-  padding: 5px;
+  border: 5px solid #166534;
   width: auto;
   margin: 15px;
   border-radius: 5px;
+  display: grid;
+  grid-template-columns: 4fr 6fr 3fr 2fr 1fr;
+  align-items: center;
+}
+
+.todo > p {
+  height: 100%;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border-inline: 2px solid #166534;
+}
+
+.todo > .priority {
+  border-right: 4px solid #166534;
+  /* The input checkbox does not have a border so the border here needs to be twice as thick */
+}
+
+input {
+  height: 30px;
+  display: flex;
 }

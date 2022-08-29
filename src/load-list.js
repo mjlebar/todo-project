@@ -4,7 +4,7 @@ import { project } from "./project.js";
 function loadList() {
   const kick = todo(
     "Kick ass",
-    `Kick someone's ass`,
+    `Kick someone's ass, Kick someone's ass, Kick someone's ass, Kick someone's ass, Kick someone's ass, Kick someone's ass`,
     "12/15/2022",
     "High",
     true
@@ -14,7 +14,7 @@ function loadList() {
     `Kick someone's ass`,
     "12/15/2022",
     "High",
-    false
+    true
   );
   const eat = todo(
     "Kick ass",
