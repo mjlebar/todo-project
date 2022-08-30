@@ -11,6 +11,7 @@ function loadPage() {
 
   const sidebar = document.createElement("div");
   sidebar.classList.add("sidebar");
+
   const main = document.createElement("div");
   main.classList.add("main");
 

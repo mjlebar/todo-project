@@ -44,7 +44,7 @@ body {
   margin: 15px;
   border-radius: 5px;
   display: grid;
-  grid-template-columns: 4fr 6fr 3fr 2fr 1fr;
+  grid-template-columns: 5fr 7fr 5fr 4fr 2fr 2fr;
   align-items: center;
 }
 
@@ -63,6 +63,33 @@ body {
 }
 
 input {
-  height: 30px;
+  height: 25px;
   display: flex;
+}
+
+.remove {
+  display: flex;
+  height: 100%;
+  border-left: 4px solid #166534;
+  justify-content: center;
+  align-items: center;
+}
+
+.remove > img {
+  height: 50px;
+}
+
+.todo > .done {
+  border-inline: 0px;
+}
+
+.plus {
+  height: 60px;
+  width: auto;
+  margin-left: 10px;
+}
+
+.head-row {
+  grid-template-columns: 5fr 7fr 5fr 4fr 4fr;
+  font-size: xx-large;
 }
