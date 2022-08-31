@@ -31,11 +31,40 @@ function project(title) {
     main.appendChild(plus);
   };
 
-  const newTodo = () => {
-    const newTodo = todoForm();
-    addTodo(newTodo);
-    displayTodos();
-  }; //Tried setting this up as an external module, but it needs to be in the project object so it can add the created todo
+  const newTodo = (e) => {
+    todoForm(e); //sets up to do form
+
+    const submit = document.querySelector(".submit");
+    const titleInput = document.querySelector(".title-input");
+    const descriptionInput = document.querySelector(".description-input");
+    const dateInput = document.querySelector(".date-input");
+    const priorityInput = document.querySelector(".priority-input");
+    const doneInput = document.querySelector(".done-input");
+    const form = document.querySelector("form");
+    const plus = e.target;
+
+    let todoTitle, todoDescription, todoDate, todoPriority, todoCompleted;
+
+    submit.addEventListener("click", () => {
+      todoTitle = titleInput.value;
+      todoDescription = descriptionInput.value;
+      todoDate = dateInput.value;
+      todoPriority = priorityInput.value;
+      todoCompleted = doneInput.checked;
+      form.remove();
+      plus.classList.remove("hidden");
+      const newTodo = todo(
+        todoTitle,
+        todoDescription,
+        todoDate,
+        todoPriority,
+        todoCompleted
+      );
+
+      addTodo(newTodo);
+      displayTodos();
+    });
+  }; //Tried setting this up as an external module, but it needs to be in the project object so the project can add the created todo
 
   return { title, todos, addTodo, displayTodos };
 }
