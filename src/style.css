@@ -50,7 +50,8 @@ form {
 }
 
 .todo > p,
-form > input {
+form > input,
+.todo > .edit {
   height: 100%;
   display: flex;
   text-align: center;
@@ -95,8 +96,8 @@ input {
 }
 
 .head-row {
-  grid-template-columns: 5fr 7fr 5fr 4fr 4fr;
-  font-size: xx-large;
+  grid-template-columns: 5fr 8fr 5fr 4fr 4fr;
+  font-size: x-large;
 }
 
 .hidden {
