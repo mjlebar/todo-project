@@ -142,3 +142,8 @@ select:focus {
   font-weight: 800;
   font-size: x-large;
 }
+
+.plus-proj {
+  margin-top: 15px;
+  height: 40px;
+}

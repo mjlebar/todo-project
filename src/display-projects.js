@@ -30,6 +30,12 @@ function displayProjects(projects) {
     projTitle.addEventListener("click", projects[i].displayTodos); //when we click the title of a project, displays corresponding todos
   } //Creates each project row
 
+  const plus = document.createElement("img");
+  plus.src = "../src/plus-box-outline.svg";
+  plus.classList.add("plus-proj");
+  //Attaches plus to the sidebar
+  side.appendChild(plus);
+
   projects[0].displayTodos(); //displays default project
 
   function deleteProj(e) {

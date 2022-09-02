@@ -11,6 +11,21 @@ function todo(title, description, dueDate, priority, completed) {
       const newNode = document.createElement("p");
 
       newNode.classList.add(input.classList[1]);
+
+      switch (input.classList[1]) {
+        case "title":
+          title = input.value;
+          break;
+        case "description":
+          description = input.value;
+          break;
+        case "due-date":
+          dueDate = input.value;
+          break;
+        case "priority":
+          priority = input.value;
+          break;
+      } //makes sure the appropriate propety is replaced in the underlyig todo structure
       newNode.textContent = input.value;
       input.parentNode.replaceChild(newNode, input);
       newNode.addEventListener("dblclick", editContent);
