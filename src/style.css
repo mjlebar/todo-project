@@ -28,12 +28,12 @@ body {
 
 .sidebar {
   background-color: #e2e8f0;
-  border-right: 4px solid white;
+  border-right: 4px solid #166534;
 }
 
 .main {
   background-color: #e2e8f0;
-  border-left: 4px solid white;
+  border-left: 4px solid #166534;
 }
 
 .todo,
@@ -58,6 +58,7 @@ form > input,
   justify-content: center;
   align-items: center;
   border-inline: 2px solid #166534;
+  padding: 2px;
 }
 
 .todo > .priority,
@@ -112,4 +113,32 @@ input:focus,
 textarea:focus,
 select:focus {
   outline: none;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar > div {
+  display: flex;
+  flex-direction: row;
+  border: 6px double white;
+  margin: 10px;
+  padding: 2px;
+  align-items: center;
+  justify-content: space-around;
+  font-weight: 800;
+}
+
+.proj-remove > img {
+  height: 25px;
+}
+
+.head-proj {
+  padding-bottom: 25px;
+  text-align: center;
+  border-bottom: 5px solid #166534;
+  font-weight: 800;
+  font-size: x-large;
 }

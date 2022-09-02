@@ -1,4 +1,5 @@
-import { loadList } from "./load-list.js";
+import { displayProjects } from "./display-projects.js";
+import { initProjects } from "./init-projects.js";
 
 function loadPage() {
   const content = document.querySelector("#content");
@@ -19,7 +20,10 @@ function loadPage() {
   header.appendChild(headerText);
   content.appendChild(sidebar);
   content.appendChild(main); //Sets up basic structure of page
-  loadList();
+
+  const projects = initProjects();
+
+  displayProjects(projects);
 }
 
 export { loadPage };

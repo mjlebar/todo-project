@@ -27,6 +27,7 @@ function project(title) {
     plus.src = "../src/plus-box-outline.svg";
     plus.classList.add("plus");
     plus.addEventListener("click", newTodo);
+    //Creates a plus symbol after all todos to create a new one
 
     main.appendChild(plus);
   };

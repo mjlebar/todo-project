@@ -30,31 +30,29 @@ function todo(title, description, dueDate, priority, completed) {
   const display = (index, arr) => {
     const todoRow = document.createElement("div");
     todoRow.classList.add("todo");
-    todoRow.classList.add(`${index}`);
+    if (index) {
+      todoRow.classList.add(`${index}`);
+    } //adds the index to the classlist only if we are not looking at the head row (where index would be undefined)
 
     const todoTitle = document.createElement("p");
     todoTitle.textContent = title;
     todoTitle.classList.add("title");
     todoRow.append(todoTitle);
-    todoTitle.addEventListener("dblclick", editContent); //Makes it so the entry can be edited by double clicking
 
     const todoDescription = document.createElement("p");
     todoDescription.textContent = description;
     todoDescription.classList.add("description");
     todoRow.appendChild(todoDescription);
-    todoDescription.addEventListener("dblclick", editContent);
 
     const todoDate = document.createElement("p");
     todoDate.textContent = dueDate;
     todoDate.classList.add("due-date");
     todoRow.appendChild(todoDate);
-    todoDate.addEventListener("dblclick", editContent);
 
     const todoPriority = document.createElement("p");
     todoPriority.textContent = priority;
     todoPriority.classList.add("priority");
     todoRow.appendChild(todoPriority);
-    todoPriority.addEventListener("dblclick", editContent);
 
     if (dueDate === "Due") {
       todoRow.classList.add("head-row");
@@ -64,6 +62,12 @@ function todo(title, description, dueDate, priority, completed) {
       todoRow.appendChild(completeHeader);
     } //checks if we're looking at head row... otherwise dueDate should be in date format, not the word 'due'
     else {
+      todoTitle.addEventListener("dblclick", editContent);
+      todoDescription.addEventListener("dblclick", editContent);
+      todoDate.addEventListener("dblclick", editContent);
+      todoPriority.addEventListener("dblclick", editContent);
+      //Makes it so the entry can be edited by double clicking
+
       const todoCompleted = document.createElement("input");
       todoCompleted.type = "checkbox";
       todoCompleted.checked = completed;
