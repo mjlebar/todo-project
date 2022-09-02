@@ -1,4 +1,6 @@
-function displayProjects(projects) {
+import { project } from "./project.js";
+
+function displayProjects(projects, newProj = false) {
   const side = document.querySelector(".sidebar");
   side.innerHTML = ""; //makes sure the sidebar is cleared out before loading in the projects - makes sure we don't duplicate
 
@@ -8,11 +10,14 @@ function displayProjects(projects) {
 
   side.appendChild(header);
 
+  const projs = document.createElement("div");
+  side.appendChild(projs); //a container so taht we can target the first and last project specifically
+
   for (let i = 0; i < projects.length; i++) {
     const projRow = document.createElement("div");
-    side.appendChild(projRow);
+    projs.appendChild(projRow);
     projRow.classList.add(`${i}`);
-    projRow.classList.add(".proj-row");
+    projRow.classList.add("proj-row");
 
     const projTitle = document.createElement("p");
     projTitle.textContent = projects[i].title;
@@ -27,25 +32,76 @@ function displayProjects(projects) {
     projRemove.appendChild(projRemoveIcon);
     projRow.append(projRemove); //attaches delete button for project
 
-    projTitle.addEventListener("click", projects[i].displayTodos); //when we click the title of a project, displays corresponding todos
+    projRow.addEventListener("click", selectProj); //when we click the title of a project, displays corresponding todos
   } //Creates each project row
 
   const plus = document.createElement("img");
   plus.src = "../src/plus-box-outline.svg";
   plus.classList.add("plus-proj");
+  plus.addEventListener("click", addProj);
   //Attaches plus to the sidebar
   side.appendChild(plus);
 
-  projects[0].displayTodos(); //displays default project
+  if (newProj) {
+    projects[projects.length - 1].displayTodos();
+    projs.lastChild.classList.add("selected");
+    console.log(side.lastChild);
+  } else {
+    projects[0].displayTodos();
+    projs.firstChild.classList.add("selected");
+  }
+
+  //displays a new project if we've just added one, the default otherwise
 
   function deleteProj(e) {
     const targRow = e.target.parentNode.parentNode;
-    const index = targRow.className[0];
+    const index = targRow.classList[0];
     // console.log(index);
     targRow.remove();
     projects.splice(index, 1);
     displayProjects(projects);
   } //needs to be defined in-scope so it has access to the projects array
+
+  function addProj(e) {
+    const plus = e.target;
+    plus.classList.add("hidden");
+
+    const form = document.createElement("div"); //this needs to be a div so the page doesn't think we're submitting a form & reload
+    form.classList.add("proj-form");
+    const titleInput = document.createElement("input");
+    titleInput.classList.add("title-input");
+    form.appendChild(titleInput);
+    side.appendChild(form);
+    form.addEventListener("keydown", submitProj);
+  } //Creates form to add new project
+
+  function submitProj(e) {
+    if (e.key === "Enter") {
+      const proj = project(e.target.value);
+      projects.push(proj);
+      displayProjects(projects, true);
+    }
+  } //Also needs access to projects array- actually creates new projects based on form
+
+  function selectProj(e) {
+    let currProj;
+
+    if (e.target.classList.contains("proj-title")) {
+      currProj = e.target.parentNode;
+    } else if (e.target.classList.contains("proj-row")) {
+      currProj = e.target;
+    } else {
+      return;
+    } //makes sure we have clicked the title or row, not the remove button
+    const projList = currProj.parentNode.children;
+
+    for (let proj of projList) {
+      proj.classList.remove("selected");
+    } //makes sure only current project is selected
+    const index = currProj.classList[0];
+    projects[index].displayTodos();
+    currProj.classList.add("selected");
+  } //Also needs project array - we need to have this function rather than just calling display to-dos so that we can add a visual indicator of which project is selected
 }
 
 export { displayProjects };

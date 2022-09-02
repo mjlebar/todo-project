@@ -120,7 +120,8 @@ select:focus {
   flex-direction: column;
 }
 
-.sidebar > div {
+.sidebar > div > div,
+.proj-form {
   display: flex;
   flex-direction: row;
   border: 6px double white;
@@ -146,4 +147,8 @@ select:focus {
 .plus-proj {
   margin-top: 15px;
   height: 40px;
+}
+
+.sidebar .selected {
+  border-color: #166534;
 }

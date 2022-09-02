@@ -3,9 +3,11 @@ import { todoForm } from "./todoForm.js";
 
 function project(title) {
   const todos = [];
+
   const addTodo = (todo) => {
     todos.push(todo);
   };
+
   const displayTodos = () => {
     const main = document.querySelector(".main");
     main.innerHTML = ""; //clear out any previous entries so that the display changes, rather than duplicating all entries
