@@ -1,4 +1,5 @@
-import { project } from "./project.js";
+import { format } from "date-fns";
+import { readDate } from "./read-date.js";
 
 function todo(title, description, dueDate, priority, completed) {
   const toggleComplete = () => {
@@ -15,18 +16,23 @@ function todo(title, description, dueDate, priority, completed) {
       switch (input.classList[1]) {
         case "title":
           title = input.value;
+          newNode.textContent = title;
           break;
         case "description":
           description = input.value;
+          newNode.textContent = description;
           break;
         case "due-date":
           dueDate = input.value;
+          const date = readDate(dueDate);
+          newNode.textContent = format(date, "MM/dd/yyyy");
           break;
         case "priority":
           priority = input.value;
+          newNode.textContent = priority;
           break;
-      } //makes sure the appropriate propety is replaced in the underlyig todo structure
-      newNode.textContent = input.value;
+      } //makes sure the appropriate property is replaced in the underlyig todo structure
+
       input.parentNode.replaceChild(newNode, input);
       newNode.addEventListener("dblclick", editContent);
     }
@@ -37,6 +43,9 @@ function todo(title, description, dueDate, priority, completed) {
     const input = document.createElement("input");
     input.classList.add("edit");
     input.classList.add(node.classList.value);
+    if (e.target.classList.contains("due-date")) {
+      input.type = "date";
+    }
     input.value = node.textContent;
     node.parentNode.replaceChild(input, node);
     input.addEventListener("keypress", submitContent);
@@ -60,9 +69,8 @@ function todo(title, description, dueDate, priority, completed) {
     todoRow.appendChild(todoDescription);
 
     const todoDate = document.createElement("p");
-    todoDate.textContent = dueDate;
     todoDate.classList.add("due-date");
-    todoRow.appendChild(todoDate);
+    todoRow.appendChild(todoDate); //this needs to be set differently for the header row, so it will be set inside the conditional further on
 
     const todoPriority = document.createElement("p");
     todoPriority.textContent = priority;
@@ -75,8 +83,12 @@ function todo(title, description, dueDate, priority, completed) {
       completeHeader.textContent = "Done";
       completeHeader.classList.add("done");
       todoRow.appendChild(completeHeader);
+      todoDate.textContent = dueDate;
     } //checks if we're looking at head row... otherwise dueDate should be in date format, not the word 'due'
     else {
+      const date = new Date(dueDate);
+      todoDate.textContent = format(date, "MM/dd/yyyy");
+
       todoTitle.addEventListener("dblclick", editContent);
       todoDescription.addEventListener("dblclick", editContent);
       todoDate.addEventListener("dblclick", editContent);

@@ -15,6 +15,7 @@ function todoForm(e) {
   form.appendChild(descriptionInput);
 
   const dateInput = document.createElement("input");
+  dateInput.type = "date";
   dateInput.classList.add("date-input");
   form.appendChild(dateInput);
 
