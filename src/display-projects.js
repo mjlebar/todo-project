@@ -1,6 +1,9 @@
 import { project } from "./project.js";
+import { todo } from "./todo.js";
 
 function displayProjects(projects, newProj = false) {
+  localStorage.setItem("projects", JSON.stringify(projects)); //Stores the projects in local storage...
+
   const side = document.querySelector(".sidebar");
   side.innerHTML = ""; //makes sure the sidebar is cleared out before loading in the projects - makes sure we don't duplicate
 
@@ -56,7 +59,6 @@ function displayProjects(projects, newProj = false) {
   function deleteProj(e) {
     const targRow = e.target.parentNode.parentNode;
     const index = targRow.classList[0];
-    // console.log(index);
     targRow.remove();
     projects.splice(index, 1);
     displayProjects(projects);

@@ -1,9 +1,7 @@
 import { todo } from "./todo.js";
 import { todoForm } from "./todoForm.js";
 
-function project(title) {
-  const todos = [];
-
+function project(title, todos = []) {
   const addTodo = (todo) => {
     todos.push(todo);
   };

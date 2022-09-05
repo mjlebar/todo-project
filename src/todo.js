@@ -3,7 +3,16 @@ import { readDate } from "./read-date.js";
 
 function todo(title, description, dueDate, priority, completed) {
   const toggleComplete = () => {
+    let projIndex = document.querySelector(".selected").classList[0];
+    let todoIndex = input.parentNode.classList[1];
+
+    let projects = JSON.parse(localStorage.getItem("projects"));
+    let thisTodo = projects[projIndex].todos[todoIndex];
+
+    localStorage.setItem("projects", JSON.stringify(projects));
+
     completed = !completed;
+    thisTodo.completed = completed;
   };
 
   const submitContent = (e) => {
@@ -11,27 +20,38 @@ function todo(title, description, dueDate, priority, completed) {
       const input = e.target;
       const newNode = document.createElement("p");
 
+      let projIndex = document.querySelector(".selected").classList[0];
+      let todoIndex = input.parentNode.classList[1];
+      let projects = JSON.parse(localStorage.getItem("projects"));
+      let thisTodo = projects[projIndex].todos[todoIndex];
+
       newNode.classList.add(input.classList[1]);
 
       switch (input.classList[1]) {
         case "title":
           title = input.value;
+          thisTodo.title = title;
           newNode.textContent = title;
           break;
         case "description":
           description = input.value;
+          thisTodo.description = description;
           newNode.textContent = description;
           break;
         case "due-date":
           dueDate = input.value;
+          thisTodo.dueDate = dueDate;
           const date = readDate(dueDate);
           newNode.textContent = format(date, "MM/dd/yyyy");
           break;
         case "priority":
           priority = input.value;
+          thisTodo.priority = priority;
           newNode.textContent = priority;
           break;
       } //makes sure the appropriate property is replaced in the underlyig todo structure
+
+      localStorage.setItem("projects", JSON.stringify(projects));
 
       input.parentNode.replaceChild(newNode, input);
       newNode.addEventListener("dblclick", editContent);
@@ -54,9 +74,6 @@ function todo(title, description, dueDate, priority, completed) {
   const display = (index, arr) => {
     const todoRow = document.createElement("div");
     todoRow.classList.add("todo");
-    if (index) {
-      todoRow.classList.add(`${index}`);
-    } //adds the index to the classlist only if we are not looking at the head row (where index would be undefined)
 
     const todoTitle = document.createElement("p");
     todoTitle.textContent = title;
@@ -86,6 +103,7 @@ function todo(title, description, dueDate, priority, completed) {
       todoDate.textContent = dueDate;
     } //checks if we're looking at head row... otherwise dueDate should be in date format, not the word 'due'
     else {
+      todoRow.classList.add(`${index}`);
       const date = new Date(dueDate);
       todoDate.textContent = format(date, "MM/dd/yyyy");
 
