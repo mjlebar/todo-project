@@ -1,5 +1,3 @@
-import { todo } from "./todo.js";
-
 function todoForm(e) {
   const main = document.querySelector(".main");
   const plus = e.target;
