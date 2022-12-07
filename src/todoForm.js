@@ -1,5 +1,5 @@
 function todoForm(e) {
-  const main = document.querySelector(".main");
+  const main = document.querySelector("main");
   const plus = e.target;
   plus.classList.add("hidden");
 
@@ -34,18 +34,6 @@ function todoForm(e) {
   form.appendChild(submit);
 
   main.appendChild(form);
-
-  //   let todoTitle, todoDescription, todoDate, todoPriority, todoCompleted;
-
-  //   if (todoTitle) {
-  //     return todo(
-  //       todoTitle,
-  //       todoDescription,
-  //       todoDate,
-  //       todoPriority,
-  //       todoCompleted
-  //     );
-  //   }
-}
+} //just sets up html structure of the form to add new toodos
 
 export { todoForm };
