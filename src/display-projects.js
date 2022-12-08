@@ -1,5 +1,6 @@
 import { project } from "./project.js";
 import plusIcon from "./plus-box-outline.svg";
+import trashIcon from "./delete-empty.svg";
 
 function displayProjects(projects, newProj = false) {
   localStorage.setItem("projects", JSON.stringify(projects)); //Stores the projects in local storage...
@@ -32,7 +33,7 @@ function displayProjects(projects, newProj = false) {
     const projRemove = document.createElement("div");
     projRemove.classList.add("proj-remove");
     const projRemoveIcon = document.createElement("img");
-    projRemoveIcon.src = "../src/delete-empty.svg";
+    projRemoveIcon.src = trashIcon;
     projRemove.addEventListener("click", deleteProj);
     projRemove.appendChild(projRemoveIcon);
     projRow.append(projRemove); //attaches delete button for project
