@@ -1,4 +1,5 @@
 import { project } from "./project.js";
+import plusIcon from "./plus-box-outline.svg";
 
 function displayProjects(projects, newProj = false) {
   localStorage.setItem("projects", JSON.stringify(projects)); //Stores the projects in local storage...
@@ -38,7 +39,7 @@ function displayProjects(projects, newProj = false) {
   } //Creates each project row, including event listeners for selecting and deleting rows
 
   const plus = document.createElement("img");
-  plus.src = "../src/plus-box-outline.svg";
+  plus.src = plusIcon;
   plus.classList.add("plus-proj");
   plus.addEventListener("click", addProj);
   //Attaches a plus button to the sidebar - the event listener allows a project to be added using the plus button
@@ -102,7 +103,6 @@ function displayProjects(projects, newProj = false) {
     projects[index].displayTodos(); //displays the todos for the appropriate project
     currProjRow.classList.add("selected");
   } //once a project row or title has been clicked on, this ensures that row and that row only is highlgihted and has its todos displayed
-
 } //passed an array of projects, and a boolean variable to track whether a new project has been added. Displays the projects in the sidebar, and one project (the first one, or a new one if a new one has been added) has its todos displayed in the center of the page. Also attaches event listeners to allow for deleting and adding projects. Event listener functions are defined in scope so that they have access to the projects array
 
 export { displayProjects };

@@ -1,6 +1,7 @@
 import { format } from "date-fns";
 import { updateNode } from "./update-node.js";
 import { readDate } from "./read-date.js";
+import trashIcon from "./delete-empty.svg";
 
 function todo(title, description, dueDate, priority, completed) {
   const toggleComplete = (e) => {
@@ -125,7 +126,7 @@ function todo(title, description, dueDate, priority, completed) {
       const todoRemove = document.createElement("div");
       todoRemove.classList.add("remove");
       const todoRemoveIcon = document.createElement("img");
-      todoRemoveIcon.src = "../src/delete-empty.svg";
+      todoRemoveIcon.src = trashIcon;
       todoRemoveIcon.addEventListener("click", (e) => {
         arr.splice(index, 1);
         e.target.parentNode.parentNode.remove();

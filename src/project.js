@@ -24,7 +24,7 @@ function project(title, todos = []) {
     } //passes the responsibility to individual todos to display themselves
 
     const plus = document.createElement("img");
-    plus.src = "../todo-project/src/plus-box-outline.svg";
+    plus.src = "../src/plus-box-outline.svg";
     plus.classList.add("plus-todo");
     plus.addEventListener("click", newTodo);
     //Creates a plus symbol after all todos, allowing creation of a new one

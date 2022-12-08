@@ -1,3 +1,5 @@
+import arrowIcon from "./arrow-right-box.svg";
+
 function todoForm(e) {
   const main = document.querySelector("main");
   const plus = e.target;
@@ -29,7 +31,7 @@ function todoForm(e) {
   const submit = document.createElement("div");
   submit.classList.add("submit");
   const submitIcon = document.createElement("img");
-  submitIcon.src = "../src/arrow-right-box.svg";
+  submitIcon.src = arrowIcon;
   submit.appendChild(submitIcon);
   form.appendChild(submit);
 
