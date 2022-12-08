@@ -128,9 +128,15 @@ function todo(title, description, dueDate, priority, completed) {
       const todoRemoveIcon = document.createElement("img");
       todoRemoveIcon.src = trashIcon;
       todoRemoveIcon.addEventListener("click", (e) => {
-        arr.splice(index, 1);
-        e.target.parentNode.parentNode.remove();
-      }); //Create a button to remove todos - we have this in the else block because it is not in the header row. This is the only time arr is used
+        arr.splice(index, 1); //remove the todo from the array of todos
+
+        const projIndex = document.querySelector(".selected").classList[0]; //the currently selected project
+        const projects = JSON.parse(localStorage.getItem("projects"));
+        projects[projIndex].todos.splice(index, 1); //we remove the todo from the local storage array
+        localStorage.setItem("projects", JSON.stringify(projects)); //and reflect that in local storage
+
+        e.target.parentNode.parentNode.remove(); //remove the node representing that todo from the dom
+      }); //Create a button to remove todos - we have this in the else block because this button is not in the header row. This is the only time arr is used. We can't update node to update local storage here, since we are updating the whole array. Since this is the only time we do that, we can keep that activity in this funtion
       todoRemove.appendChild(todoRemoveIcon);
       todoRow.appendChild(todoRemove);
       //Create delete icon and add deletion event listener
