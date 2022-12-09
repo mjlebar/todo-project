@@ -3,11 +3,13 @@
   grid-template-rows: 100px 700px;
   grid-template-columns: 1fr 4fr;
 }
+/* sets up the structure of the page as a grid */
 
 body {
   margin: 0px;
   font-family: Arial, Helvetica, sans-serif;
 }
+/* chooses fonts and makes sure the page fills the viewport */
 
 header {
   background-color: #166534;
@@ -24,6 +26,7 @@ header {
   font-weight: 700;
   margin-left: 75px;
   margin-block: 35px;
+  /* positions the text nicely */
 }
 
 .sidebar {
@@ -50,6 +53,7 @@ form {
   grid-template-columns: 5fr 8fr 5fr 4fr 2fr 2fr;
   align-items: center;
 }
+/* this formats both todo items themselves, and the form to submit new todos. All the different columns correspond to the different fields of the todo. We want grid and not flex because we want the structure to be rigid */
 
 .todo > p,
 form > input,
@@ -62,17 +66,12 @@ form > input,
   border-inline: 2px solid #166534;
   padding: 2px;
 }
+/* Makes sure todo subsections, todo input form sections, and todo edit sections all are formatted uniformly and nicely */
 
 .todo > .priority,
 form > .priority-input {
   border-right: 4px solid #166534;
-  /* The input checkbox does not have a border so the border here needs to be twice as thick */
-}
-
-input {
-  height: 25px;
-  display: flex;
-  min-width: 25px; /* Otherwise the grid alignment gets thrown off */
+  /* The input checkbox does not have a border so the border here needs to be twice as thick to make up for it */
 }
 
 .remove,
@@ -83,39 +82,30 @@ input {
   justify-content: center;
   align-items: center;
 }
+/* formats our remove icon (when a todo has been set) and the submit icon (when we are editing a todo) */
 
 .remove > img {
   height: 50px;
 }
-
-.todo > .done {
-  border-inline: 0px;
-}
+/* formats the remove icon */
 
 .plus-todo {
   height: 60px;
   width: auto;
   margin-left: 10px;
 }
+/* formats and positions the button to add new todos */
 
 .head-row {
   grid-template-columns: 5fr 8fr 5fr 4fr 4fr;
   font-size: x-large;
 }
+/* formats the head row of the todo list - we make the text larger, and the grid has a different format since we have fewer entries */
 
 .hidden {
   display: none;
 }
-
-form > .done-input {
-  height: 75%;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-  outline: none;
-}
+/* class to show and hide todos */
 
 .sidebar > div > span,
 .proj-form {
@@ -128,10 +118,12 @@ select:focus {
   justify-content: space-around;
   font-weight: 800;
 }
+/* formats the list of projects, and the form to submit a new project */
 
 .proj-remove > img {
   height: 25px;
 }
+/* formats the image to remove a project */
 
 .head-proj {
   padding-bottom: 25px;
@@ -140,12 +132,15 @@ select:focus {
   font-weight: 800;
   font-size: x-large;
 }
+/* formats the header of the projects (ie the block that says "projects") */
 
 .plus-proj {
   margin-top: 15px;
   height: 40px;
 }
+/* formats the button to add new projects */
 
 .sidebar .selected {
   border-color: #166534;
 }
+/* makes sure we can see which project is selected */
