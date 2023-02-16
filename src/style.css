@@ -1,3 +1,7 @@
+:root {
+  --main: #2c3e50;
+}
+
 #content {
   display: grid;
   grid-template-rows: 100px 700px;
@@ -12,11 +16,12 @@ body {
 /* chooses fonts and makes sure the page fills the viewport */
 
 header {
-  background-color: #166534;
+  background-color: #e67e22;
   grid-row-start: 1;
   grid-row-end: 2;
   grid-column-start: 1;
   grid-column-end: 3;
+  border-bottom: 5px solid #2c3e50;
 }
 
 .headerText {
@@ -30,25 +35,25 @@ header {
 }
 
 .sidebar {
-  background-color: #e2e8f0;
-  border-right: 4px solid #166534;
+  background-color: #ecf0f1;
+  border-right: 4px solid var(--main);
   display: flex;
   flex-direction: column;
 }
 
 main {
-  background-color: #e2e8f0;
-  border-left: 4px solid #166534;
+  background-color: #ecf0f1;
+  border-left: 4px solid var(--main);
 }
 
 .todo,
 form {
   color: #1f2937;
   font-weight: 700;
-  border: 5px solid #166534;
+  border: 5px solid var(--main);
   width: auto;
   margin: 15px;
-  border-radius: 5px;
+  border-radius: 8px;
   display: grid;
   grid-template-columns: 5fr 8fr 5fr 4fr 2fr 2fr;
   align-items: center;
@@ -63,14 +68,14 @@ form > input,
   text-align: center;
   justify-content: center;
   align-items: center;
-  border-inline: 2px solid #166534;
+  border-inline: 2px solid var(--main);
   padding: 2px;
 }
 /* Makes sure todo subsections, todo input form sections, and todo edit sections all are formatted uniformly and nicely */
 
 .todo > .priority,
 form > .priority-input {
-  border-right: 4px solid #166534;
+  border-right: 4px solid var(--main);
   /* The input checkbox does not have a border so the border here needs to be twice as thick to make up for it */
 }
 
@@ -78,7 +83,7 @@ form > .priority-input {
 .submit {
   display: flex;
   height: 100%;
-  border-left: 4px solid #166534;
+  border-left: 4px solid var(--main);
   justify-content: center;
   align-items: center;
 }
@@ -128,7 +133,7 @@ form > .priority-input {
 .head-proj {
   padding-bottom: 25px;
   text-align: center;
-  border-bottom: 5px solid #166534;
+  border-bottom: 5px solid var(--main);
   font-weight: 800;
   font-size: x-large;
 }
@@ -141,6 +146,6 @@ form > .priority-input {
 /* formats the button to add new projects */
 
 .sidebar .selected {
-  border-color: #166534;
+  border-color: #e67e22;
 }
 /* makes sure we can see which project is selected */
